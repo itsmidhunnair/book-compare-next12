@@ -32,11 +32,12 @@ const Option = ({ option, setSelectedValue }) => {
   );
 };
 
-/**
- * @type {import("./filterMenu").options} 
- */
-// Option.propType = {
-//   option: PropTypes.
-// }
+Option.propType = {
+  option: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
+  setSelectedValue: PropTypes.func.isRequired,
+};
 
 export default Option;

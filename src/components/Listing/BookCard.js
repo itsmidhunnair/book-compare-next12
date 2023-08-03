@@ -1,9 +1,36 @@
 import Image from "next/image";
 import { Rating } from "react-simple-star-rating";
 import React from "react";
-import Link from "next/link";
 import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
 
+/**
+ * @typedef {Object} book
+ * @property {Object} book.volumeInfo
+ * @property {String} book.volumeInfo.title
+ * @property {String} book.volumeInfo.description
+ * @property {String} book.volumeInfo.publishedDate
+ * @property {String} book.volumeInfo.averageRating
+ * @property {String} book.volumeInfo.ratingsCount
+ * @property {String} book.volumeInfo.publisher
+ * @property {Object} book.volumeInfo.imageLinks
+ * @property {String} book.volumeInfo.imageLinks.thumbnail
+ */
+
+/**
+ * @typedef {Object} props
+ * @property {book} book
+ */
+
+/**
+ * Product Card
+ *
+ * @description Renders card for individual book items.
+ * If image is not received then a placeholder image is automatically set.
+ *
+ * It has an Add to compare button which on click creates an array consisiting of the book id.
+ *
+ * @param {props}
+ */
 const BookCard = ({ book }) => {
   return (
     <div className="w-80 rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">

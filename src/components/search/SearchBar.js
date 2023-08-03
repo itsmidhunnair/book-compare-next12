@@ -1,8 +1,22 @@
-import HeaderLogo from "@components/common/headerLogo";
-import useSearch from "@hooks/useSearch";
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
+// Hook
+import useSearch from "@hooks/useSearch";
+// Custom Component
+import HeaderLogo from "@components/common/headerLogo";
 
+/**
+ * Search Bar Component
+ *
+ * @description Renders search bar where user can enter the book name and on submit
+ * the text is set in the query params and based on it the data is displayed in the page,
+ *
+ * If a page is reloaded after the search the search term is bought back to input field
+ * from the query params
+ *
+ * All functionality is handled by useSearch() (custom hook)
+ *
+ */
 const SearchBar = () => {
   const { submitSearch } = useSearch();
   const { query } = useRouter();

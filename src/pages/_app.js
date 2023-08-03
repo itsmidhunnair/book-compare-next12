@@ -3,6 +3,7 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      {/* To make full body bg in dark colour */}
       <style jsx global>
         {`
           body {
