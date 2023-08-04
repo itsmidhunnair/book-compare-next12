@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 /**
- * @typedef {Object} props
+ * @typedef {Object} optionProps
  * @property {import("./filterMenu").options} option
  * @property {Function} setSelectedValue - Function to change State variable when an option is clicked
  */
@@ -32,6 +32,9 @@ const Option = ({ option, setSelectedValue }) => {
   );
 };
 
+/**
+ * @type {import("./filterMenu").options} option
+ */
 Option.propType = {
   option: PropTypes.shape({
     text: PropTypes.string.isRequired,
