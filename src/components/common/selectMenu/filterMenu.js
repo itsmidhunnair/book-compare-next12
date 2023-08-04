@@ -10,6 +10,8 @@ import { filterOptions } from "@constants/filter/options";
 // Custom React Component
 import Option from "./filterOptions";
 
+import PropTypes from "prop-types";
+
 /**
  * @typedef {Object} options
  * @property {String} text
@@ -84,6 +86,13 @@ const Select = ({ options }) => {
       </div>
     </>
   );
+};
+
+Select.propTypes = {
+  options: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
 };
 
 export default Select;

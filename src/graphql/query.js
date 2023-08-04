@@ -65,4 +65,34 @@ const book = gql`
   }
 `;
 
-export { searchBooks, book };
+/**
+ * Graphql query to get specific book details based on the book id
+ */
+const booksById = gql`
+  query BookList($bookListId: [ID]!) {
+    bookList(ids: $bookListId) {
+      volumeInfo {
+        title
+        subtitle
+        ratingsCount
+        publisher
+        publishedDate
+        pageCount
+        imageLinks {
+          thumbnail
+        }
+        averageRating
+        authors
+      }
+      id
+      saleInfo {
+        listPrice {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;
+
+export { searchBooks, book, booksById };
