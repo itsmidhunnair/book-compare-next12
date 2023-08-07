@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Rating } from "react-simple-star-rating";
-
+import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
 /**
  * Generates cell that is to be displayed in row and column of comparison table
  */

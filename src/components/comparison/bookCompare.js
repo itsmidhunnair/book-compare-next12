@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import { useQuery } from "@apollo/client";
 
-import { Rating } from "react-simple-star-rating";
 import { MdDeleteForever } from "react-icons/md";
 
 import Loader from "@components/common/loader";
@@ -17,7 +16,6 @@ import { booksById } from "src/graphql/query";
 
 import { flatArrayOfBooks } from "src/helpers/flatenObj";
 
-import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
 import { getElementToDisplay } from "src/helpers/bookCompare";
 
 /**
