@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useSearch from "@hooks/useSearch";
 // Custom Component
 import HeaderLogo from "@components/common/headerLogo";
-import CompareButton from "@components/common/compareLabel";
+import CompareButton from "@components/search/compareLabel";
 
 /**
  * Search Bar Component

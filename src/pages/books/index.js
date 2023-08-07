@@ -9,8 +9,8 @@ import { searchBooks } from "src/graphql/query";
 import SearchBar from "@components/search/SearchBar";
 import BookCard from "@components/Listing/BookCard";
 import Loader from "@components/common/loader";
-import Select from "@components/common/selectMenu/filterMenu";
-import Pagination from "@components/common/pagination/Pagination";
+import Select from "@components/Listing/selectMenu/filterMenu";
+import Pagination from "@components/Listing/pagination/Pagination";
 import ScrollToTopBtn from "@components/common/scrollToTop/ScrollToTopBtn";
 
 import { filterOptions } from "@constants/filter/options";

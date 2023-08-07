@@ -20,7 +20,7 @@ import rootReducer from "./slice";
 
 /**
  * Config for Redux Persist
- */
+ */ 
 const persistConfig = {
   key: "compare",
   storage,

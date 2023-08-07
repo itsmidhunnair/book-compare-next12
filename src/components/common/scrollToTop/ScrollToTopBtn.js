@@ -1,7 +1,7 @@
 import React from "react";
 import { BiArrowToTop } from "react-icons/bi";
-// Hooks
-import useScrollTo from "@hooks/useScrollTo";
+
+import { scrollToTop } from "src/helpers/handleScroll/scroll";
 /**
  * Scroll to Top Button
  *
@@ -12,7 +12,6 @@ import useScrollTo from "@hooks/useScrollTo";
  *
  */
 const ScrollToTopBtn = () => {
-  const { scrollToTop } = useScrollTo();
   return (
     <button
       onClick={scrollToTop}

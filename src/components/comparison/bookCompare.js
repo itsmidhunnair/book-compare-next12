@@ -1,10 +1,8 @@
 import React from "react";
 import Error from "next/error";
-import Image from "next/image";
 
 import { useQuery } from "@apollo/client";
 
-import { Rating } from "react-simple-star-rating";
 import { MdDeleteForever } from "react-icons/md";
 
 import Loader from "@components/common/loader";
@@ -17,7 +15,6 @@ import { booksById } from "src/graphql/query";
 
 import { flatArrayOfBooks } from "src/helpers/flatenObj";
 
-import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
 import { getElementToDisplay } from "src/helpers/bookCompare";
 
 /**
@@ -36,14 +33,17 @@ import { getElementToDisplay } from "src/helpers/bookCompare";
  *
  */
 const BookCompare = () => {
-  const { compareList, clearCompareList } = useCompare();
+  const { compareList, clearCompareList, removeCompareItem } = useCompare();
 
-  const { data, error } = useQuery(booksById, {
+  const { data, error, loading } = useQuery(booksById, {
     variables: {
       bookListId: compareList,
     },
   });
 
+  /**
+   * If any error is found then this is returned
+   */
   if (error) {
     return (
       <Error
@@ -53,14 +53,23 @@ const BookCompare = () => {
     );
   }
 
-  if (!data) {
+  /**
+   * rendered untill data is not fetched and there is no error
+   */
+  if (loading) {
     return <Loader />;
   }
 
+  /**
+   * rendered when data fetching is complete but there is no data
+   */
   if (data && data.bookList.length === 0) {
     return <div>Please Add some to compare list</div>;
   }
 
+  /**
+   * creates array of single level object from nested level
+   */
   const books = flatArrayOfBooks(data.bookList);
 
   return (
@@ -69,7 +78,7 @@ const BookCompare = () => {
         onClick={() => {
           clearCompareList();
         }}
-        className="mb-3 p-2 border rounded-md float-right flex items-center"
+        className="mb-3 p-2 border rounded-md float-right flex items-center bg-red-900"
       >
         <MdDeleteForever className="text-lg" />
         <span>Remove all</span>
@@ -82,7 +91,11 @@ const BookCompare = () => {
                 <th className="bg-gray-800 p-2">{label.text}</th>
                 {books.map((book) => (
                   <td className="border p-1" key={label.key + book.id}>
-                    {getElementToDisplay({ key: label.key, book: book })}
+                    {getElementToDisplay({
+                      key: label.key,
+                      book: book,
+                      removeCompareItem,
+                    })}
                   </td>
                 ))}
               </tr>
