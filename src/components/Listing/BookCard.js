@@ -1,10 +1,12 @@
-import Image from "next/image";
-import { Rating } from "react-simple-star-rating";
 import React from "react";
+import Image from "next/image";
+
+import { Rating } from "react-simple-star-rating";
+
 import placeHolderImg from "@public/assets/img/No-Image-Placeholder.png";
-import { MdCompare } from "react-icons/md";
-import { CgRemove } from "react-icons/cg";
-import useCompare from "@hooks/useCompare";
+
+import { bookPropTyps } from "src/propTypes/propTypes";
+import CompareToggleButton from "./toggleButton";
 
 /**
  * @typedef {Object} book
@@ -35,12 +37,7 @@ import useCompare from "@hooks/useCompare";
  * @param {props}
  */
 const BookCard = ({ book }) => {
-  const { addCompareItem, compareList } = useCompare();
-  console.log(
-    "🚀 ~ file: BookCard.js:41 ~ BookCard ~ compareList:",
-    compareList
-  );
-
+  console.log("renderes");
   return (
     <div className="w-80 rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
       <div className="group relative h-72 w-full">
@@ -81,27 +78,7 @@ const BookCard = ({ book }) => {
           )}
         </div>
         <div className="flex items-center justify-between">
-          <button
-            key={book.id}
-            onClick={() => addCompareItem(book.id)}
-            className={`inline-flex items-center rounded-lg border-2 px-3 py-2 text-center text-sm font-medium hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-              compareList.includes(book.id)
-                ? "dark:border-red-800 dark:hover:bg-red-800 dark:focus:ring-red-900"
-                : "dark:border-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
-            } dark:text-white disabled:bg-slate-600`}
-          >
-            {compareList.includes(book.id) ? (
-              <>
-                <span className="pr-4">Remove</span>
-                <CgRemove />
-              </>
-            ) : (
-              <>
-                <span className="pr-4">Add to Compare</span>
-                <MdCompare />
-              </>
-            )}
-          </button>
+          <CompareToggleButton id={book.id} key={book.id} />
           <span className="text-xs italic text-gray-500">
             {book?.volumeInfo?.publisher}
           </span>
@@ -110,5 +87,10 @@ const BookCard = ({ book }) => {
     </div>
   );
 };
+
+/**
+ * @type {book}
+ */
+BookCard.propType = bookPropTyps;
 
 export default BookCard;

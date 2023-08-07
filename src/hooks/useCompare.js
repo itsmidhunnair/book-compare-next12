@@ -1,9 +1,17 @@
-import { toastConfig } from "@constants/toast/toastConfig";
-import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { addToCompare } from "src/store/slice/bookSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import { toastConfig } from "@constants/toast/toastConfig";
+import {
+  addToCompare,
+  removeAllFromCompare,
+  removeBookFromCompare,
+} from "src/store/slice/bookSlice";
 
 const useCompare = () => {
+  const router = useRouter();
+
   const compareList = useSelector((state) => state.book.compare);
   const dispatch = useDispatch();
   /**
@@ -11,10 +19,32 @@ const useCompare = () => {
    * @param {String} id
    */
   const addCompareItem = (id) => {
-    dispatch(addToCompare(id));
-    toast.success("Compare list updated successfully!!", toastConfig);
+    try {
+      dispatch(addToCompare(id));
+      toast.success("Booked added to compare!!", toastConfig);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: useCompare.js:21 ~ addCompareItem ~ error:",
+        error
+      );
+      toast.error(error, toastConfig);
+    }
   };
-  return { compareList, addCompareItem };
+
+  const clearCompareList = () => {
+    dispatch(removeAllFromCompare());
+    router.back();
+    toast.success("Compare list cleared successfully!!", toastConfig);
+  };
+
+  const removeCompareItem = (id) => {
+    try {
+      dispatch(removeBookFromCompare(id));
+      toast.success("Book removed from comparelist!!", toastConfig);
+    } catch (error) {}
+  };
+
+  return { compareList, addCompareItem, removeCompareItem, clearCompareList };
 };
 
 export default useCompare;

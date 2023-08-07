@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-import _ from "lodash";
+import { isEmpty, size } from "lodash";
 
 import { client } from "src/graphql/client";
 import { searchBooks } from "src/graphql/query";
@@ -42,7 +42,7 @@ const Books = (props) => {
         )}
         <div className="mt-10 flex max-w-7xl flex-wrap justify-center gap-4">
           {props.data ? (
-            _.size(props.data.books) > 0 ? (
+            size(props.data.books) > 0 ? (
               props.data.books.map((book) => (
                 <BookCard book={book} key={book.id} />
               ))
@@ -57,7 +57,7 @@ const Books = (props) => {
             </h3>
           )}
         </div>
-        {_.size(props?.data?.books) > 0 && (
+        {size(props?.data?.books) > 0 && (
           <>
             <Pagination />
             <ScrollToTopBtn />
@@ -73,17 +73,22 @@ export default Books;
 export async function getServerSideProps(context) {
   const { query } = context;
 
-  if (!_.isEmpty(query)) {
+  if (!isEmpty(query)) {
     const { data } = await client.query({
       query: searchBooks,
       variables: {
         input: {
-          index: parseInt(query.page),
+          index:
+            parseInt(query.page) > 1
+              ? parseInt(query.page) * 10 - 9
+              : parseInt(query.page),
           search: query.search,
           filter: query.filter,
         },
       },
+      fetchPolicy: "no-cache",
     });
+    console.log("🚀 ~ file: index.js:87 ~ getServerSideProps ~ data:", data);
     return {
       props: {
         data,
