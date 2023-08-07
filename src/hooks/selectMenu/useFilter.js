@@ -1,7 +1,8 @@
-import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
+import { useRouter } from "next/router";
 
 const useSelect = () => {
+
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 

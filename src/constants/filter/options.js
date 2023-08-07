@@ -1,5 +1,8 @@
 /**
  * Options to be generated in the Filter dropdown
+ * 
+ * value - must 
+ * 
  */
 export const filterOptions = [
   { value: "ebooks", text: "eBooks" },

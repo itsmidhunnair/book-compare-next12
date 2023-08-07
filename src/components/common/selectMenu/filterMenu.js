@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
-import _ from "lodash";
+import { find } from "lodash";
 
 import { IoMdClose } from "react-icons/io";
+
 import { MdFilterList } from "react-icons/md";
 // hooks
 import useSelect from "@hooks/selectMenu/useFilter";
@@ -54,8 +55,7 @@ const Select = ({ options }) => {
             query.filter ? "flex" : "hidden"
           }`}
         >
-          {query?.filter &&
-            _.find(filterOptions, { value: query?.filter }).text}
+          {query?.filter && find(filterOptions, { value: query?.filter }).text}
           <span>
             <IoMdClose className="ml-2 text-base text-gray-700" />
           </span>
