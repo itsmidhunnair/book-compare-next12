@@ -23,6 +23,7 @@ const CompareToggleButton = ({ id }) => {
     <button
       key={id}
       onClick={() => removeCompareItem(id)}
+      aria-label="add"
       className={
         "compareBtn dark:border-red-800 dark:hover:bg-red-800 dark:focus:ring-red-900 dark:text-white disabled:bg-slate-600"
       }

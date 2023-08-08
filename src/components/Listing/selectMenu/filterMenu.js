@@ -51,6 +51,7 @@ const Select = ({ options }) => {
       <div className="relative flex items-center">
         <button
           onClick={() => clearSelected()}
+          aria-label="filter"
           className={`mr-3 items-center rounded-md bg-gray-300 px-3 py-2 text-sm ${
             query.filter ? "flex" : "hidden"
           }`}

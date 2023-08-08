@@ -15,6 +15,7 @@ const ScrollToTopBtn = () => {
   return (
     <button
       onClick={scrollToTop}
+      aria-label="scroll"
       className={`fixed bottom-10 right-10 rounded-md bg-gray-700 p-1 dark:bg-white max-md:bottom-5 max-md:right-5`}
     >
       <BiArrowToTop className="text-3xl text-white dark:text-gray-800" />

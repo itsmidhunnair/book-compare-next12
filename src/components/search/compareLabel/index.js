@@ -21,6 +21,7 @@ const CompareLabel = () => {
   return (
     <button
       className="relative border-2 rounded-md p-1 border-gray-800"
+      aria-label="compare"
       onClick={() => push("/compare")}
     >
       <div className="aspect-square w-5 rounded-full text-center text-white text-sm font-bold bg-gray-800 absolute -right-2 -top-2">
