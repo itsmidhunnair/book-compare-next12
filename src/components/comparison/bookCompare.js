@@ -16,6 +16,7 @@ import { booksById } from "src/graphql/query";
 import { flatArrayOfBooks } from "src/helpers/flatenObj";
 
 import { getElementToDisplay } from "src/helpers/bookCompare";
+import NoBookToCompare from "./noBooks/noBooksToCompare";
 
 /**
  *
@@ -64,7 +65,7 @@ const BookCompare = () => {
    * rendered when data fetching is complete but there is no data
    */
   if (data && data.bookList.length === 0) {
-    return <div>Please Add some to compare list</div>;
+    return <NoBookToCompare />;
   }
 
   /**
