@@ -26,7 +26,7 @@ const persistConfig = {
   storage,
 };
 
-// Persisie
+// Persisited Reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const makeStore = () => {
