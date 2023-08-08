@@ -3,11 +3,16 @@ import { MdArrowBackIos } from "react-icons/md";
 
 import HeaderLogo from "@components/common/headerLogo";
 import BookCompare from "@components/comparison/bookCompare";
+import HtmlLangTitle from "@components/common/customLangTitle/htmlLangTitle";
 
 const Page = () => {
   const router = useRouter();
   return (
     <div className="mx-4 overflow-hidden">
+      <HtmlLangTitle
+        title="Compare Books"
+        description="Meta description for compare page"
+      />
       <div className="py-2">
         <HeaderLogo />
       </div>

@@ -5,7 +5,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 const DynamicPersistComp = ({ children }) => {
   const store = useStore();
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== undefined) {
     return (
       <PersistGate
         persistor={store.__persistor}

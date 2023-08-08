@@ -14,6 +14,7 @@ import Pagination from "@components/Listing/pagination/Pagination";
 import ScrollToTopBtn from "@components/common/scrollToTop/ScrollToTopBtn";
 
 import { filterOptions } from "@constants/filter/options";
+import HtmlLangTitle from "@components/common/customLangTitle/htmlLangTitle";
 
 const Books = (props) => {
   const router = useRouter();
@@ -24,6 +25,10 @@ const Books = (props) => {
 
   return (
     <>
+      <HtmlLangTitle
+        title="Books"
+        description="Meta description for compare page"
+      />
       <div className="container mx-auto max-w-7xl pt-10">
         <SearchBar />
         {props.data && (

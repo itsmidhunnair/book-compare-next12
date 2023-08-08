@@ -20,7 +20,7 @@ import rootReducer from "./slice";
 
 /**
  * Config for Redux Persist
- */ 
+ */
 const persistConfig = {
   key: "compare",
   storage,
@@ -32,6 +32,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const makeStore = () => {
   const store = configureStore({
     reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
   });
   store.__persistor = persistStore(store);
   return store;

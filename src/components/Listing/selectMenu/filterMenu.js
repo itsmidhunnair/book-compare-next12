@@ -89,10 +89,12 @@ const Select = ({ options }) => {
 };
 
 Select.propTypes = {
-  options: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  }),
+  options: PropTypes.shape([
+    {
+      text: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    },
+  ]),
 };
 
 export default Select;
