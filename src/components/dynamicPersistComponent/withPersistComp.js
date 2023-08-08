@@ -15,7 +15,7 @@ const DynamicPersistComp = ({ children }) => {
           </div>
         }
       >
-        {children}
+        {() => children}
       </PersistGate>
     );
   } else {
