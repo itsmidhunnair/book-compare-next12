@@ -1,8 +1,21 @@
-import useCompare from "@hooks/useCompare";
 import React from "react";
+
 import { CgRemove } from "react-icons/cg";
 import { MdCompare } from "react-icons/md";
 
+import useCompare from "@hooks/useCompare";
+
+import PropTypes from "prop-types";
+/**
+ * Compare button present on each card of books in listing page
+ *
+ * if a id is present in state then remove button is displayed else
+ * add to compare button is displayed
+ *
+ * @param {{id:String}} book.id
+ *
+ * @returns {JSX.Element}
+ */
 const CompareToggleButton = ({ id }) => {
   const { addCompareItem, removeCompareItem, compareList } = useCompare();
 
@@ -31,4 +44,7 @@ const CompareToggleButton = ({ id }) => {
   );
 };
 
+CompareToggleButton.propType = {
+  id: PropTypes.string.isRequired,
+};
 export default CompareToggleButton;
