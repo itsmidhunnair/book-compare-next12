@@ -14,9 +14,9 @@ import { wrapper } from "src/store";
 
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import DynamicPersistComp from "@components/dynamicPersistComponent/withPersistComp";
 
 function MyApp({ Component, pageProps }) {
-  const store = useStore();
   const router = useRouter();
   const ref = useRef(null);
 
@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* To make full body bg in dark colour */}
       <style jsx global>
         {`
           body {
@@ -50,34 +49,26 @@ function MyApp({ Component, pageProps }) {
         `}
       </style>
       <LoadingBar color="#131827" ref={ref} height={4} />
-      <PersistGate
-        persistor={store.__persistor}
-        loading={
-          <div>
-            <Loader />
-          </div>
-        }
-      >
-        <ApolloProvider client={client}>
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-          <div className="dark">
+      <ApolloProvider client={client}>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <div className="dark">
+          <DynamicPersistComp>
             <Component {...pageProps} />
-          </div>
-        </ApolloProvider>
-      </PersistGate>
+          </DynamicPersistComp>
+        </div>
+      </ApolloProvider>
     </>
   );
 }
-
 export default wrapper.withRedux(MyApp);
