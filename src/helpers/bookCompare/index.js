@@ -16,9 +16,9 @@ import { Rating } from "react-simple-star-rating";
 
 /**
  * Generates cell that is to be displayed in row and column of comparison table
- * 
+ *
  * A switch case is present which based on the key returns respective element
- * 
+ *
  * if key is image an image tag is returned with src prop, similarly for ratings
  * and by default text is returned.
  *
@@ -30,6 +30,7 @@ export const getElementToDisplay = ({ key, book, removeCompareItem }) => {
       return (
         <>
           <button
+            aria-label="remove"
             onClick={() => {
               removeCompareItem(book.id);
             }}

@@ -76,6 +76,7 @@ const BookCompare = () => {
   return (
     <div className="dark:bg-gray-700 mt-20 p-4 rounded-md dark:text-white max-w-7xl mx-auto">
       <button
+        aria-label="removeall"
         onClick={() => {
           clearCompareList();
         }}
